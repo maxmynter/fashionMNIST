@@ -6,10 +6,10 @@ import torch.optim as optim
 from mlflow import log_metric, log_param, log_params, start_run
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-n_epochs=30
+n_epochs=15
 batch_size = 100
 loss_criterion = nn.CrossEntropyLoss()
-learning_rate = 0.01
+learning_rate = 0.005
 
 def evaluate_model(model, dataset_loader):
     with torch.no_grad():
@@ -28,7 +28,7 @@ def evaluate_model(model, dataset_loader):
     acc = n_correct / n_samples
     return acc
 
-with start_run(run_name="AlexNet. More Epochs"):
+with start_run(run_name=" 4 Conv, 1st 2x Dropout, 4 dense"):
     log_params({"Epochs": n_epochs, 
                 "Batch Size":batch_size, 
                 "loss_criterion": loss_criterion._get_name(),
@@ -51,6 +51,7 @@ with start_run(run_name="AlexNet. More Epochs"):
 
     for epoch in range(n_epochs):
         for i, (labels, images) in enumerate(train_loader):
+            network.zero_grad()
             images = images.to(device)
             labels = labels.to(device)
             
