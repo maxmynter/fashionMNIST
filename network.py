@@ -4,7 +4,7 @@ import torch.nn.functional as F
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.c1 = nn.Conv2d(1, 48, kernel_size=3)
+        self.c1 = nn.Conv2d(1, 48, kernel_size=5)
         self.c2 = nn.Conv2d(48,96, kernel_size=5)
         self.c3 = nn.Conv2d(96,80, kernel_size=3)
         self.c4 = nn.Conv2d(80,96, kernel_size=2)
