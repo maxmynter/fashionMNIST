@@ -16,6 +16,9 @@ pandas = "^2.0.3"
 torchvision = "^0.15.2"
 matplotlib = "^3.7.2"
 mlflow = "^2.4.2"
+rise = "^5.7.1"
+jupyterthemes = "^0.20.0"
+jupyter-contrib-nbextensions = "^0.7.0"
 
 
 [build-system]
